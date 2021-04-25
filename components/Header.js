@@ -30,7 +30,6 @@ export default function Header() {
       }
       return item;
     });
-
     setTodoArray(updatedArray);
   };
 
