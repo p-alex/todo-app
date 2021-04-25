@@ -1,0 +1,40 @@
+.header {
+  position: relative;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 100px 0;
+  &_container {
+    max-width: 800px;
+    margin: auto;
+  }
+  &_logoAndTheme {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &_logo {
+    color: white;
+    font-size: 3rem;
+    letter-spacing: 20px;
+  }
+  &_theme {
+    cursor: pointer;
+  }
+  &_inputContainer {
+    position: relative;
+    margin-top: 40px;
+    padding: 20px;
+    border-radius: 5px;
+    background: white;
+    input {
+      width: 100%;
+      background: transparent;
+      outline: 0;
+      border: 0;
+      font-size: 24px;
+    }
+  }
+}
