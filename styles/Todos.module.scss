@@ -1,0 +1,16 @@
+.todos_container {
+  position: absolute;
+  width: 800px;
+  left: 0;
+  right: 0;
+  top: 250px;
+  margin: auto;
+  list-style-type: none;
+
+  border-radius: 5px;
+  margin-top: 30px;
+  box-shadow: 0 10px 30px rgb(212, 212, 212);
+  @media (max-width: 850px) {
+    width: 90%;
+  }
+}
