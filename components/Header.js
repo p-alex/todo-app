@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Image from "next/image";
 import FlipMove from "react-flip-move";
 import styles from "../styles/Header.module.scss";
 export default function Header() {
@@ -33,6 +34,10 @@ export default function Header() {
     setTodoArray(updatedArray);
   };
 
+  const handleDelete = (itemId) => {
+    setTodoArray(todoArray.filter((item, id) => id !== itemId));
+  };
+
   return (
     <div
       className={styles.header}
@@ -42,11 +47,12 @@ export default function Header() {
         <div className={styles.header_logoAndTheme}>
           <h1 className={styles.header_logo}>TODO</h1>
           <div className={styles.header_theme}>
-            <img src="/images/icon-moon.svg" />
+            <Image src="/images/icon-moon.svg" width={25} height={25} />
           </div>
         </div>
         <form onSubmit={handleSubmit}>
           <div className={styles.header_inputContainer}>
+            <div className={styles.checkbox}></div>
             <input
               type="text"
               placeholder="Create a new todo..."
@@ -58,25 +64,33 @@ export default function Header() {
         </form>
       </div>
       <ul className={styles.todosContainer}>
-        <FlipMove easing="ease-in">
+        <FlipMove easing="ease-in" duration={300}>
           {todoArray.map((item, id) => (
-            <li
-              className={styles.todo}
-              key={id}
-              onClick={() => handleCheck(id)}
-            >
+            <li className={styles.todo} key={id}>
               {item?.isChecked ? (
-                <div className={styles.checkbox + " " + styles.checked}>
+                <div
+                  className={styles.checkbox + " " + styles.checked}
+                  onClick={() => handleCheck(id)}
+                >
                   <img src="/images/icon-check.svg" />
                 </div>
               ) : (
-                <div className={styles.checkbox}></div>
+                <div
+                  className={styles.checkbox}
+                  onClick={() => handleCheck(id)}
+                ></div>
               )}
               {item?.isChecked ? (
                 <s style={{ opacity: "0.3" }}>{item?.todo}</s>
               ) : (
                 item?.todo
               )}
+              <div
+                className={styles.deleteBtn}
+                onClick={() => handleDelete(id)}
+              >
+                <img src="/images/icon-cross.svg" />
+              </div>
             </li>
           ))}
         </FlipMove>

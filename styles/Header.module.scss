@@ -30,6 +30,7 @@
   }
   &_inputContainer {
     position: relative;
+    display: flex;
     width: 100%;
     margin-top: 40px;
     padding: 20px;
@@ -63,12 +64,21 @@
 }
 
 .todo {
+  width: 100%;
+  position: relative;
   animation: opacity 300ms;
   padding: 20px;
   border-bottom: solid 1px rgb(221, 221, 221);
   display: flex;
   align-items: center;
   background: white;
+  cursor: pointer;
+  font-size: 24px;
+  color: #222;
+}
+
+.todo:hover .deleteBtn {
+  opacity: 1;
 }
 
 .todo:first-of-type {
@@ -95,4 +105,16 @@
 .checked {
   border: 0;
   background: linear-gradient(var(--CheckBackground));
+}
+
+.deleteBtn {
+  display: flex;
+  z-index: 10;
+  opacity: 0;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  right: 0px;
+  padding: 20px;
+  transition: opacity 300ms ease-in-out;
 }
