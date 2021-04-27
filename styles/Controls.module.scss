@@ -1,0 +1,43 @@
+.controls {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background: white;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  &_filters {
+    position: absolute;
+    width: 184px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    span {
+      margin-right: 20px;
+      cursor: pointer;
+    }
+    span:last-of-type {
+      margin-right: 0;
+    }
+    @media (max-width: 967px) {
+      position: absolute;
+      width: 100%;
+      top: 90px;
+      left: 0;
+      border-radius: 5px;
+      background: white;
+      text-align: center;
+      padding: 20px;
+      box-shadow: 0 0px 30px rgb(212, 212, 212);
+    }
+  }
+  &_clearCompleted {
+    cursor: pointer;
+  }
+}
+
+.activeFilter {
+  color: var(--BrightBlue);
+  font-weight: 700;
+}

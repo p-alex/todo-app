@@ -13,6 +13,7 @@ export default function Home() {
   ]);
 
   const [input, setInput] = useState("");
+  const [filter, setFilter] = useState("All");
 
   const handleChange = (e) => setInput(e.target.value);
 
@@ -38,6 +39,13 @@ export default function Home() {
   const handleDelete = (itemId) =>
     setTodoArray(todoArray.filter((item, id) => id !== itemId));
 
+  const handleClearCompleted = () =>
+    setTodoArray(todoArray.filter((item) => !item.isChecked));
+
+  const handleFilterChange = (filter) => {
+    setFilter(filter);
+  };
+
   return (
     <>
       <Banner>
@@ -51,6 +59,9 @@ export default function Home() {
         todoArray={todoArray}
         handleCheck={handleCheck}
         handleDelete={handleDelete}
+        filter={filter}
+        handleFilterChange={handleFilterChange}
+        handleClearCompleted={handleClearCompleted}
       />
     </>
   );
