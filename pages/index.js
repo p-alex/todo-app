@@ -42,10 +42,7 @@ export default function Home() {
   const handleClearCompleted = () =>
     setTodoArray(todoArray.filter((item) => !item.isChecked));
 
-  const handleFilterChange = (filter) => {
-    setFilter(filter);
-  };
-
+  const handleFilterChange = (filter) => setFilter(filter);
   return (
     <>
       <Banner>
