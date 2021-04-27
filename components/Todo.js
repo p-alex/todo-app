@@ -19,7 +19,13 @@ export default function Todo({
       ) : (
         <div className={styles.checkbox} onClick={() => handleCheck(id)}></div>
       )}
-      {isChecked ? <s style={{ opacity: "0.3" }}>{todo}</s> : todo}
+      {isChecked ? (
+        <p onClick={() => handleCheck(id)}>
+          <s style={{ opacity: "0.3" }}>{todo}</s>
+        </p>
+      ) : (
+        <p onClick={() => handleCheck(id)}>{todo}</p>
+      )}
       <div className={styles.deleteBtn} onClick={() => handleDelete(id)}>
         <img src="/images/icon-cross.svg" />
       </div>

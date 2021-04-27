@@ -28,5 +28,8 @@
     outline: 0;
     border: 0;
     font-size: 24px;
+    @media (max-width: 967px) {
+      font-size: 18px;
+    }
   }
 }
