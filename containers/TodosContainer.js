@@ -68,7 +68,7 @@ export default function TodosContainer({
           : styles.todos_container + " " + styles.darkmode
       }
     >
-      <ReactSortable list={todoArray} setList={setTodoArray} delay={100}>
+      <ReactSortable list={todoArray} setList={setTodoArray} delay={200}>
         {displayList()}
       </ReactSortable>
 
