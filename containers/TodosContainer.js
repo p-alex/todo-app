@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
 import styles from "../styles/Todos.module.scss";
 import Todo from "../components/Todo";
 import Controls from "../components/Controls";
+import { ReactSortable } from "react-sortablejs";
 export default function TodosContainer({
   todoArray,
+  setTodoArray,
   handleCheck,
   handleDelete,
   filter,
@@ -11,20 +12,53 @@ export default function TodosContainer({
   handleClearCompleted,
   theme,
 }) {
-  const [filteredTodos, setFilteredTodos] = useState([]);
-  useEffect(() => {
-    let array = todoArray;
-    switch (filter) {
-      case "All":
-        return setFilteredTodos(array);
-      case "Active":
-        return setFilteredTodos(array.filter((item) => !item.isChecked));
-      case "Completed":
-        return setFilteredTodos(array.filter((item) => item.isChecked));
-      default:
-        return setFilteredTodos(array);
+  let displayList = () => {
+    if (filter === "All") {
+      return todoArray.map((item, id) => {
+        return (
+          <Todo
+            key={id}
+            id={item.id}
+            handleCheck={handleCheck}
+            handleDelete={handleDelete}
+            todo={item.todo}
+            isChecked={item.isChecked}
+            theme={theme}
+          />
+        );
+      });
+    } else if (filter === "Active") {
+      let array = todoArray.filter((item) => item.isChecked === false);
+      return array.map((item, id) => {
+        return (
+          <Todo
+            key={id}
+            id={item.id}
+            handleCheck={handleCheck}
+            handleDelete={handleDelete}
+            todo={item.todo}
+            isChecked={item.isChecked}
+            theme={theme}
+          />
+        );
+      });
+    } else if (filter === "Completed") {
+      let array = todoArray.filter((item) => item.isChecked === true);
+      return array.map((item, id) => {
+        return (
+          <Todo
+            key={id}
+            id={item.id}
+            handleCheck={handleCheck}
+            handleDelete={handleDelete}
+            todo={item.todo}
+            isChecked={item.isChecked}
+            theme={theme}
+          />
+        );
+      });
     }
-  }, [todoArray, filter]);
+  };
 
   return (
     <ul
@@ -34,21 +68,14 @@ export default function TodosContainer({
           : styles.todos_container + " " + styles.darkmode
       }
     >
-      {filteredTodos.map((item, id) => (
-        <Todo
-          key={id}
-          id={id}
-          handleCheck={handleCheck}
-          handleDelete={handleDelete}
-          todo={item.todo}
-          isChecked={item.isChecked}
-          theme={theme}
-        />
-      ))}
+      <ReactSortable list={todoArray} setList={setTodoArray}>
+        {displayList()}
+      </ReactSortable>
+
       {todoArray.length !== 0 && (
         <Controls
           handleFilterChange={handleFilterChange}
-          totalItems={filteredTodos.length}
+          totalItems={todoArray.length}
           handleClearCompleted={handleClearCompleted}
           filter={filter}
           theme={theme}

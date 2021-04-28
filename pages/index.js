@@ -5,12 +5,12 @@ import TodosContainer from "../containers/TodosContainer";
 
 export default function Home() {
   const [todoArray, setTodoArray] = useState([
-    { todo: "Complete online javascript course", isChecked: true },
-    { todo: "Jog around the park 3x", isChecked: false },
-    { todo: "10 minutes meditation", isChecked: false },
-    { todo: "Read for 1 hour", isChecked: false },
-    { todo: "Pick up groceries", isChecked: false },
-    { todo: "Complete Todo App on Frontend Mentor", isChecked: false },
+    { todo: "Complete online javascript course", isChecked: true, id: 0 },
+    { todo: "Jog around the park 3x", isChecked: false, id: 1 },
+    { todo: "10 minutes meditation", isChecked: false, id: 2 },
+    { todo: "Read for 1 hour", isChecked: false, id: 3 },
+    { todo: "Pick up groceries", isChecked: false, id: 4 },
+    { todo: "Complete Todo App on Frontend Mentor", isChecked: false, id: 5 },
   ]);
 
   const [input, setInput] = useState("");
@@ -27,14 +27,16 @@ export default function Home() {
   const handleAdd = (e) => {
     e.preventDefault();
     if (input) {
-      setTodoArray([...todoArray, { todo: input, isChecked: false }]);
+      setTodoArray([
+        ...todoArray,
+        { todo: input, isChecked: false, id: todoArray.length },
+      ]);
       setInput("");
     }
   };
-
   const handleCheck = (itemId) => {
-    const updatedArray = todoArray.map((item, id) => {
-      if (itemId === id) {
+    const updatedArray = todoArray.map((item) => {
+      if (itemId === item.id) {
         item.isChecked = !item.isChecked;
         return item;
       }
@@ -44,7 +46,7 @@ export default function Home() {
   };
 
   const handleDelete = (itemId) =>
-    setTodoArray(todoArray.filter((item, id) => id !== itemId));
+    setTodoArray(todoArray.filter((item) => item.id !== itemId));
 
   const handleClearCompleted = () =>
     setTodoArray(todoArray.filter((item) => !item.isChecked));
@@ -55,7 +57,6 @@ export default function Home() {
     if (theme === "light") return setTheme("dark");
     if (theme === "dark") return setTheme("light");
   };
-
   return (
     <>
       <Banner theme={theme}>
@@ -69,6 +70,7 @@ export default function Home() {
       </Banner>
       <TodosContainer
         todoArray={todoArray}
+        setTodoArray={setTodoArray}
         handleCheck={handleCheck}
         handleDelete={handleDelete}
         filter={filter}
