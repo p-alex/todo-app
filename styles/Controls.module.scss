@@ -29,7 +29,10 @@
       background: white;
       text-align: center;
       padding: 20px;
-      box-shadow: 0 0px 30px rgb(212, 212, 212);
+      box-shadow: var(--lightShadow);
+      &.darkmode {
+        box-shadow: var(--darkShadow);
+      }
     }
   }
   &_clearCompleted {
@@ -40,4 +43,14 @@
 .activeFilter {
   color: var(--BrightBlue);
   font-weight: 700;
+}
+
+.controls.darkmode {
+  background: var(--VeryDarkDesaturatedBlue);
+  color: var(--DarkGrayishBlue);
+}
+
+.controls_filters.darkmode {
+  background: var(--VeryDarkDesaturatedBlue);
+  color: var(--DarkGrayishBlue);
 }

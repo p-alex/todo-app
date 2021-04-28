@@ -5,9 +5,15 @@ export default function Todo({
   handleCheck,
   todo,
   isChecked,
+  theme,
 }) {
   return (
-    <li className={styles.todo} key={id}>
+    <li
+      className={
+        theme === "light" ? styles.todo : styles.todo + " " + styles.darkmode
+      }
+      key={id}
+    >
       {isChecked ? (
         <div
           className={styles.checkbox + " " + styles.checked}

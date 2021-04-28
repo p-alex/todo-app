@@ -1,11 +1,5 @@
 import "../styles/globals.scss";
-import { useEffect } from "react";
 
-function MyApp({ Component, pageProps }) {
-  useEffect(() => {
-    if (!localStorage.getItem("todos")) localStorage.setItem("todos", "[]");
-  });
+export default function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />;
 }
-
-export default MyApp;

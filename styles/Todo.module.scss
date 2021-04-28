@@ -10,7 +10,8 @@
   background: white;
   cursor: pointer;
   font-size: 24px;
-  color: #222;
+  color: #333;
+
   p {
     position: relative;
     word-wrap: break-word;
@@ -62,4 +63,10 @@
   @media (max-width: 967px) {
     opacity: 1;
   }
+}
+
+.todo.darkmode {
+  background: var(--VeryDarkDesaturatedBlue);
+  color: var(--LightGrayishBlue);
+  border-bottom: solid 1px rgb(63, 63, 63);
 }

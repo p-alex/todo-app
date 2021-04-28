@@ -9,6 +9,7 @@ export default function TodosContainer({
   filter,
   handleFilterChange,
   handleClearCompleted,
+  theme,
 }) {
   const [filteredTodos, setFilteredTodos] = useState([]);
   useEffect(() => {
@@ -26,7 +27,13 @@ export default function TodosContainer({
   }, [todoArray, filter]);
 
   return (
-    <ul className={styles.todos_container}>
+    <ul
+      className={
+        theme === "light"
+          ? styles.todos_container
+          : styles.todos_container + " " + styles.darkmode
+      }
+    >
       {filteredTodos.map((item, id) => (
         <Todo
           key={id}
@@ -35,6 +42,7 @@ export default function TodosContainer({
           handleDelete={handleDelete}
           todo={item.todo}
           isChecked={item.isChecked}
+          theme={theme}
         />
       ))}
       {todoArray.length !== 0 && (
@@ -43,6 +51,7 @@ export default function TodosContainer({
           totalItems={filteredTodos.length}
           handleClearCompleted={handleClearCompleted}
           filter={filter}
+          theme={theme}
         />
       )}
     </ul>

@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Banner from "../components/Banner";
 import Header from "../components/Header";
 import TodosContainer from "../containers/TodosContainer";
+
 export default function Home() {
   const [todoArray, setTodoArray] = useState([
     { todo: "Complete online javascript course", isChecked: true },
@@ -14,6 +15,12 @@ export default function Home() {
 
   const [input, setInput] = useState("");
   const [filter, setFilter] = useState("All");
+  const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    document.body.style.backgroundColor =
+      theme === "light" ? "white" : "var(--VeryDarkBlue)";
+  }, [theme]);
 
   const handleChange = (e) => setInput(e.target.value);
 
@@ -43,13 +50,21 @@ export default function Home() {
     setTodoArray(todoArray.filter((item) => !item.isChecked));
 
   const handleFilterChange = (filter) => setFilter(filter);
+
+  const handleThemeChange = () => {
+    if (theme === "light") return setTheme("dark");
+    if (theme === "dark") return setTheme("light");
+  };
+
   return (
     <>
-      <Banner>
+      <Banner theme={theme}>
         <Header
           input={input}
           handleChange={handleChange}
           handleAdd={handleAdd}
+          handleThemeChange={handleThemeChange}
+          theme={theme}
         />
       </Banner>
       <TodosContainer
@@ -59,6 +74,7 @@ export default function Home() {
         filter={filter}
         handleFilterChange={handleFilterChange}
         handleClearCompleted={handleClearCompleted}
+        theme={theme}
       />
     </>
   );
