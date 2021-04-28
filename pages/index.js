@@ -78,6 +78,7 @@ export default function Home() {
         handleClearCompleted={handleClearCompleted}
         theme={theme}
       />
+      Click and hold to drag
     </>
   );
 }
