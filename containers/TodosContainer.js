@@ -71,7 +71,8 @@ export default function TodosContainer({
       <ReactSortable
         list={todoArray}
         setList={setTodoArray}
-        delayOnTouchStart={true}
+        delayOnTouchOnly={true}
+        delay={1}
       >
         {displayList()}
       </ReactSortable>
