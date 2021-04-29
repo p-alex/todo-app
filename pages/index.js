@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Banner from "../components/Banner";
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 import TodosContainer from "../containers/TodosContainer";
 
@@ -57,6 +58,7 @@ export default function Home() {
     if (theme === "light") return setTheme("dark");
     if (theme === "dark") return setTheme("light");
   };
+
   return (
     <>
       <Banner theme={theme}>
@@ -78,6 +80,7 @@ export default function Home() {
         handleClearCompleted={handleClearCompleted}
         theme={theme}
       />
+      <Footer theme={theme} />
     </>
   );
 }

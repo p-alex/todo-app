@@ -1,8 +1,6 @@
 .todo {
   width: 100%;
   position: relative;
-  animation-name: opacity;
-  animation-duration: 300ms;
   padding: 0px 20px;
   border-bottom: solid 1px rgb(221, 221, 221);
   display: flex;
@@ -68,5 +66,5 @@
 .todo.darkmode {
   background: var(--VeryDarkDesaturatedBlue);
   color: var(--LightGrayishBlue);
-  border-bottom: solid 1px rgb(63, 63, 63);
+  border-bottom: solid 1px var(--VeryDarkGrayishBlue);
 }

@@ -1,0 +1,28 @@
+.footer {
+  position: relative;
+  width: 100%;
+  margin: 30px 0 50px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  span {
+    margin-bottom: 50px;
+    font-size: 1.2rem;
+    color: #333;
+    opacity: 0.3;
+  }
+  span.darkmode {
+    color: #fff;
+    opacity: 0.3;
+  }
+  small {
+    color: #333;
+    a {
+      color: hsl(280, 87%, 65%);
+      text-decoration: none;
+    }
+  }
+  small.darkmode {
+    color: var(--LightGrayishBlue);
+  }
+}
