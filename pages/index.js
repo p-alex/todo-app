@@ -11,8 +11,6 @@ export default function Home() {
   const [theme, setTheme] = useState("light");
   const [toggleInitializeData, setToggleInitializeData] = useState(false);
 
-  //Create app data array that contains todoArray and app_theme in it
-
   useEffect(() => {
     if (localStorage.getItem("appData") === null) {
       localStorage.setItem(
@@ -53,20 +51,33 @@ export default function Home() {
       theme === "light" ? "white" : "var(--VeryDarkBlue)";
   }, [theme]);
 
-  const handleChange = (e) => setInput(e.target.value);
+  const handleInputChange = (e) => setInput(e.target.value);
+
+  const handleThemeChange = () => {
+    let appData = JSON.parse(localStorage.getItem("appData"));
+    if (appData.appTheme === "light") {
+      appData = { ...appData, appTheme: "dark" };
+    } else {
+      appData = { ...appData, appTheme: "light" };
+    }
+    localStorage.setItem("appData", JSON.stringify(appData));
+    setToggleInitializeData(!toggleInitializeData);
+  };
 
   const handleAdd = (e) => {
     e.preventDefault();
-    let appData = JSON.parse(localStorage.getItem("appData"));
-    let todoArray = appData.todoArray;
-    todoArray = [
-      ...todoArray,
-      { todo: input, isChecked: false, id: todoArray.length },
-    ];
-    let updatedData = (appData = { ...appData, todoArray });
-    localStorage.setItem("appData", JSON.stringify(updatedData));
-    setInput("");
-    setToggleInitializeData(!toggleInitializeData);
+    if (input) {
+      let appData = JSON.parse(localStorage.getItem("appData"));
+      let todoArray = appData.todoArray;
+      todoArray = [
+        ...todoArray,
+        { todo: input, isChecked: false, id: todoArray.length },
+      ];
+      let updatedData = (appData = { ...appData, todoArray });
+      localStorage.setItem("appData", JSON.stringify(updatedData));
+      setInput("");
+      setToggleInitializeData(!toggleInitializeData);
+    }
   };
 
   const handleCheck = (itemID) => {
@@ -92,28 +103,17 @@ export default function Home() {
     setToggleInitializeData(!toggleInitializeData);
   };
 
-  const handleClearCompleted = () =>
-    setTodoArray(todoArray.filter((item) => !item.isChecked));
-
   const handleFilterChange = (filter) => setFilter(filter);
 
-  const handleThemeChange = () => {
-    let appData = JSON.parse(localStorage.getItem("appData"));
-    if (appData.appTheme === "light") {
-      appData = { ...appData, appTheme: "dark" };
-    } else {
-      appData = { ...appData, appTheme: "light" };
-    }
-    localStorage.setItem("appData", JSON.stringify(appData));
-    setToggleInitializeData(!toggleInitializeData);
-  };
+  const handleClearCompleted = () =>
+    setTodoArray(todoArray.filter((item) => !item.isChecked));
 
   return (
     <>
       <Banner theme={theme}>
         <Header
           input={input}
-          handleChange={handleChange}
+          handleInputChange={handleInputChange}
           handleAdd={handleAdd}
           handleThemeChange={handleThemeChange}
           theme={theme}

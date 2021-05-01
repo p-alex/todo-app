@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "../styles/Todo.module.scss";
 export default function Todo({
   id,
@@ -19,7 +20,7 @@ export default function Todo({
           className={styles.checkbox + " " + styles.checked}
           onClick={() => handleCheck(id)}
         >
-          <img src="/images/icon-check.svg" />
+          <Image src="/images/icon-check.svg" width={13} height={13} />
         </div>
       ) : (
         <div className={styles.checkbox} onClick={() => handleCheck(id)}></div>
@@ -32,7 +33,7 @@ export default function Todo({
         <p onClick={() => handleCheck(id)}>{todo}</p>
       )}
       <div className={styles.deleteBtn} onClick={() => handleDelete(id)}>
-        <img src="/images/icon-cross.svg" />
+        <Image src="/images/icon-cross.svg" width={20} height={20} />
       </div>
     </li>
   );

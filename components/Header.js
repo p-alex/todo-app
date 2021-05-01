@@ -1,7 +1,8 @@
+import Image from "next/image";
 import styles from "../styles/Header.module.scss";
 export default function Header({
   input,
-  handleChange,
+  handleInputChange,
   handleAdd,
   handleThemeChange,
   theme,
@@ -11,7 +12,11 @@ export default function Header({
       <div className={styles.header_logoAndTheme}>
         <h1 className={styles.header_logo}>TODO</h1>
         <div className={styles.header_theme} onClick={handleThemeChange}>
-          <img src={`/images/icon-${theme === "light" ? "moon" : "sun"}.svg`} />
+          <Image
+            src={`/images/icon-${theme === "light" ? "moon" : "sun"}.svg`}
+            width={25}
+            height={25}
+          />
         </div>
       </div>
       <form onSubmit={handleAdd}>
@@ -28,7 +33,7 @@ export default function Header({
             placeholder="Create a new todo..."
             aria-label="Create a new todo..."
             value={input}
-            onChange={handleChange}
+            onChange={handleInputChange}
             className={theme === "light" ? undefined : styles.darkmode}
           />
         </div>
