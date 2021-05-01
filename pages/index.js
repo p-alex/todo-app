@@ -9,30 +9,43 @@ export default function Home() {
   const [input, setInput] = useState("");
   const [filter, setFilter] = useState("All");
   const [theme, setTheme] = useState("light");
-  const [toggleInitializeArray, setToggleInitializeArray] = useState(false);
+  const [toggleInitializeData, setToggleInitializeData] = useState(false);
+
+  //Create app data array that contains todoArray and app_theme in it
 
   useEffect(() => {
-    if (localStorage.getItem("todoArray") === null)
+    if (localStorage.getItem("appData") === null) {
       localStorage.setItem(
-        "todoArray",
-        JSON.stringify([
-          { todo: "Complete online javascript course", isChecked: true, id: 0 },
-          { todo: "Jog around the park 3x", isChecked: false, id: 1 },
-          { todo: "10 minutes meditation", isChecked: false, id: 2 },
-          { todo: "Read for 1 hour", isChecked: false, id: 3 },
-          { todo: "Pick up groceries", isChecked: false, id: 4 },
-          {
-            todo: "Complete Todo App on Frontend Mentor",
-            isChecked: false,
-            id: 5,
-          },
-        ])
+        "appData",
+        JSON.stringify({
+          todoArray: [
+            {
+              todo: "Complete online javascript course",
+              isChecked: true,
+              id: 0,
+            },
+            { todo: "Jog around the park 3x", isChecked: false, id: 1 },
+            { todo: "10 minutes meditation", isChecked: false, id: 2 },
+            { todo: "Read for 1 hour", isChecked: false, id: 3 },
+            { todo: "Pick up groceries", isChecked: false, id: 4 },
+            {
+              todo: "Complete Todo App on Frontend Mentor",
+              isChecked: false,
+              id: 5,
+            },
+          ],
+          appTheme: "light",
+        })
       );
-    setTodoArray(JSON.parse(localStorage.getItem("todoArray")));
-  }, [toggleInitializeArray]);
+    }
+    setTodoArray(JSON.parse(localStorage.getItem("appData")).todoArray);
+    setTheme(JSON.parse(localStorage.getItem("appData")).appTheme);
+  }, [toggleInitializeData]);
 
   useEffect(() => {
-    localStorage.setItem("todoArray", JSON.stringify(todoArray));
+    let appData = JSON.parse(localStorage.getItem("appData"));
+    let updatedData = (appData = { ...appData, todoArray });
+    localStorage.setItem("appData", JSON.stringify(updatedData));
   }, [todoArray]);
 
   useEffect(() => {
@@ -44,36 +57,39 @@ export default function Home() {
 
   const handleAdd = (e) => {
     e.preventDefault();
-    if (input) {
-      let array = JSON.parse(localStorage.getItem("todoArray"));
-      let updatedArray = [
-        ...array,
-        { todo: input, id: array.length, isChecked: false },
-      ];
-      localStorage.setItem("todoArray", JSON.stringify(updatedArray));
-      setInput("");
-      setToggleInitializeArray(!toggleInitializeArray);
-    }
+    let appData = JSON.parse(localStorage.getItem("appData"));
+    let todoArray = appData.todoArray;
+    todoArray = [
+      ...todoArray,
+      { todo: input, isChecked: false, id: todoArray.length },
+    ];
+    let updatedData = (appData = { ...appData, todoArray });
+    localStorage.setItem("appData", JSON.stringify(updatedData));
+    setInput("");
+    setToggleInitializeData(!toggleInitializeData);
   };
 
   const handleCheck = (itemID) => {
-    console.log(itemID);
-    let array = JSON.parse(localStorage.getItem("todoArray"));
-    let updatedArray = array.map((item) => {
-      if (itemID === item.id) {
-        return { ...item, isChecked: !item.isChecked };
-      }
-      return item;
-    });
-    localStorage.setItem("todoArray", JSON.stringify(updatedArray));
-    setToggleInitializeArray(!toggleInitializeArray);
+    let appData = JSON.parse(localStorage.getItem("appData"));
+    let updatedData = {
+      ...appData,
+      todoArray: appData.todoArray.map((item) => {
+        if (item.id === itemID) return { ...item, isChecked: !item.isChecked };
+        return item;
+      }),
+    };
+    localStorage.setItem("appData", JSON.stringify(updatedData));
+    setToggleInitializeData(!toggleInitializeData);
   };
 
   const handleDelete = (itemID) => {
-    let array = JSON.parse(localStorage.getItem("todoArray"));
-    let updatedArray = array.filter((item) => item.id !== itemID);
-    localStorage.setItem("todoArray", JSON.stringify(updatedArray));
-    setToggleInitializeArray(!toggleInitializeArray);
+    let appData = JSON.parse(localStorage.getItem("appData"));
+    let updatedData = {
+      ...appData,
+      todoArray: appData.todoArray.filter((item) => item.id !== itemID),
+    };
+    localStorage.setItem("appData", JSON.stringify(updatedData));
+    setToggleInitializeData(!toggleInitializeData);
   };
 
   const handleClearCompleted = () =>
@@ -82,8 +98,14 @@ export default function Home() {
   const handleFilterChange = (filter) => setFilter(filter);
 
   const handleThemeChange = () => {
-    if (theme === "light") return setTheme("dark");
-    if (theme === "dark") return setTheme("light");
+    let appData = JSON.parse(localStorage.getItem("appData"));
+    if (appData.appTheme === "light") {
+      appData = { ...appData, appTheme: "dark" };
+    } else {
+      appData = { ...appData, appTheme: "light" };
+    }
+    localStorage.setItem("appData", JSON.stringify(appData));
+    setToggleInitializeData(!toggleInitializeData);
   };
 
   return (
