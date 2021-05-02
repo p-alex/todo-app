@@ -9,7 +9,7 @@ export default function Home() {
   const [todoArray, setTodoArray] = useState([]);
   const [input, setInput] = useState("");
   const [filter, setFilter] = useState("All");
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
   const [toggleInitializeData, setToggleInitializeData] = useState(false);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export default function Home() {
               id: 5,
             },
           ],
-          appTheme: "light",
+          appTheme: "dark",
         })
       );
     }
