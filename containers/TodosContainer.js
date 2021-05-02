@@ -59,6 +59,13 @@ export default function TodosContainer({
       });
     }
   };
+
+  const todosLeft = () => {
+    let count = 0;
+    todoArray.map((item) => !item.isChecked && count++);
+    return count;
+  };
+
   return (
     <ul
       className={
@@ -80,7 +87,7 @@ export default function TodosContainer({
       {todoArray.length !== 0 && (
         <Controls
           handleFilterChange={handleFilterChange}
-          totalItems={todoArray.length}
+          todosLeft={todosLeft()}
           handleClearCompleted={handleClearCompleted}
           filter={filter}
           theme={theme}

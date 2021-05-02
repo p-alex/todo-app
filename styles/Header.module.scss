@@ -7,7 +7,7 @@
 }
 .header_logo {
   color: white;
-  font-size: 3rem;
+  font-size: 2.5rem;
   letter-spacing: 20px;
 }
 .header_theme {
@@ -18,25 +18,28 @@
   display: flex;
   width: 100%;
   margin-top: 40px;
-  padding: 20px;
+  padding: 20px 25px;
   border-radius: 5px;
   background: white;
   align-items: center;
   .checkbox {
-    border: solid silver 1px;
+    border: solid var(--LightGrayishBlue) 1px;
     width: 25px;
     height: 25px;
     border-radius: 50%;
     margin-right: 20px;
+  }
+  .checkbox.darkmode {
+    border: solid var(--VeryDarkGrayishBlue) 1px;
   }
   input {
     width: 94%;
     background: transparent;
     outline: 0;
     border: 0;
-    font-size: 24px;
-    @media (max-width: 720px) {
-      font-size: 18px;
+    font-size: 18px;
+    @media (max-width: 620px) {
+      font-size: 16px;
     }
   }
 

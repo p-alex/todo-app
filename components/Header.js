@@ -27,7 +27,15 @@ export default function Header({
               : styles.header_inputContainer + " " + styles.darkmode
           }
         >
-          <div className={styles.checkbox}></div>
+          <div>
+            <div
+              className={
+                theme === "light"
+                  ? styles.checkbox
+                  : styles.checkbox + " " + styles.darkmode
+              }
+            ></div>
+          </div>
           <input
             type="text"
             placeholder="Create a new todo..."

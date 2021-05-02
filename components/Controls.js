@@ -1,7 +1,7 @@
 import styles from "../styles/Controls.module.scss";
 export default function Controls({
   handleFilterChange,
-  totalItems,
+  todosLeft,
   handleClearCompleted,
   filter,
   theme,
@@ -15,7 +15,7 @@ export default function Controls({
       }
     >
       <div className={styles.controls_total}>
-        {totalItems} {totalItems > 1 ? "items" : "item"}
+        {todosLeft} {todosLeft > 1 ? "items" : "item"} left
       </div>
       <div
         className={

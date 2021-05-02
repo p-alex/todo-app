@@ -7,6 +7,7 @@
   background: white;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  font-size: 15px;
   &_filters {
     position: absolute;
     width: 184px;
@@ -22,7 +23,7 @@
     span:last-of-type {
       margin-right: 0;
     }
-    @media (max-width: 720px) {
+    @media (max-width: 620px) {
       position: absolute;
       width: 100%;
       top: 90px;

@@ -1,25 +1,23 @@
 .todo {
   width: 100%;
   position: relative;
-  padding: 0px 20px;
   border-bottom: solid 1px rgb(221, 221, 221);
   display: flex;
   align-items: center;
   background: white;
   cursor: pointer;
-  font-size: 24px;
+  font-size: 18px;
   color: #333;
   animation-name: opacity1;
   animation-duration: 300ms;
+  justify-content: space-around;
   p {
     position: relative;
     word-wrap: break-word;
     padding: 20px 0;
-    display: block;
-    width: 80%;
-    @media (max-width: 720px) {
-      font-size: 18px;
-      padding: 20px 0;
+    width: 77.2%;
+    @media (max-width: 620px) {
+      font-size: 16px;
     }
   }
 }
@@ -36,18 +34,23 @@
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
-
+.checkboxContainer {
+  padding: 20px 0;
+}
 .checkbox {
-  border: solid silver 1px;
+  border: solid var(--LightGrayishBlue) 1px;
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  margin-right: 20px;
+  margin: 0 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   transition: border 300ms ease-in-out;
+}
+.checkbox.darkmode {
+  border: solid var(--VeryDarkGrayishBlue) 1px;
 }
 .checked {
   border: 0;
@@ -55,16 +58,16 @@
 }
 
 .deleteBtn {
-  position: absolute;
+  position: relative;
   z-index: 10;
   display: flex;
   opacity: 0;
   align-items: center;
   justify-content: center;
-  right: 0px;
   padding: 20px;
+  min-width: 60px;
   transition: opacity 300ms ease-in-out;
-  @media (max-width: 720px) {
+  @media (max-width: 620px) {
     opacity: 1;
   }
 }

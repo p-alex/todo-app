@@ -15,16 +15,22 @@ export default function Todo({
       }
       key={id}
     >
-      {isChecked ? (
-        <div
-          className={styles.checkbox + " " + styles.checked}
-          onClick={() => handleCheck(id)}
-        >
-          <Image src="/images/icon-check.svg" width={11} height={11} />
-        </div>
-      ) : (
-        <div className={styles.checkbox} onClick={() => handleCheck(id)}></div>
-      )}
+      <div onClick={() => handleCheck(id)} className={styles.checkboxContainer}>
+        {isChecked ? (
+          <div className={styles.checkbox + " " + styles.checked}>
+            <Image src="/images/icon-check.svg" width={11} height={11} />
+          </div>
+        ) : (
+          <div
+            className={
+              theme === "light"
+                ? styles.checkbox
+                : styles.checkbox + " " + styles.darkmode
+            }
+          ></div>
+        )}
+      </div>
+
       {isChecked ? (
         <p onClick={() => handleCheck(id)}>
           <s style={{ opacity: "0.3" }}>{todo}</s>
