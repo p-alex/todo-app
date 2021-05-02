@@ -18,8 +18,11 @@
   small {
     color: #333;
     a {
-      color: hsl(280, 87%, 65%);
+      color: hsl(220, 98%, 61%);
       text-decoration: none;
+    }
+    a.darkmode {
+      color: hsl(280, 87%, 65%);
     }
   }
   small.darkmode {

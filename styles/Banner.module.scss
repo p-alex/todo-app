@@ -7,9 +7,9 @@
   padding: 100px 0;
   &_container {
     position: relative;
-    width: 800px;
+    width: var(--desktopContainer);
     margin: auto;
-    @media (max-width: 967px) {
+    @media (max-width: 720px) {
       width: 90%;
     }
   }

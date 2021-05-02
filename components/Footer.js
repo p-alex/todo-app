@@ -11,6 +11,7 @@ export default function Footer({ theme }) {
           href="https://www.frontendmentor.io/solutions"
           target="_blank"
           rel="norefferer"
+          className={theme === "light" ? null : styles.darkmode}
         >
           Frontend Mentor
         </a>
@@ -19,6 +20,7 @@ export default function Footer({ theme }) {
           href="https://www.frontendmentor.io/profile/p-alex"
           target="_blank"
           rel="noreferrer"
+          className={theme === "light" ? null : styles.darkmode}
         >
           Alex Daniel
         </a>

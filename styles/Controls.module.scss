@@ -14,7 +14,7 @@
     right: 0;
     margin: auto;
     box-shadow: none;
-    background: transparent;
+    background: white;
     span {
       margin-right: 20px;
       cursor: pointer;
@@ -22,7 +22,7 @@
     span:last-of-type {
       margin-right: 0;
     }
-    @media (max-width: 967px) {
+    @media (max-width: 720px) {
       position: absolute;
       width: 100%;
       top: 90px;

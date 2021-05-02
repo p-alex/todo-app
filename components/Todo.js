@@ -20,7 +20,7 @@ export default function Todo({
           className={styles.checkbox + " " + styles.checked}
           onClick={() => handleCheck(id)}
         >
-          <Image src="/images/icon-check.svg" width={13} height={13} />
+          <Image src="/images/icon-check.svg" width={11} height={11} />
         </div>
       ) : (
         <div className={styles.checkbox} onClick={() => handleCheck(id)}></div>

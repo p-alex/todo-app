@@ -19,9 +19,9 @@ export default function TodosContainer({
           <Todo
             key={id}
             id={item.id}
+            todo={item.todo}
             handleCheck={handleCheck}
             handleDelete={handleDelete}
-            todo={item.todo}
             isChecked={item.isChecked}
             theme={theme}
           />
@@ -34,9 +34,9 @@ export default function TodosContainer({
           <Todo
             key={id}
             id={item.id}
+            todo={item.todo}
             handleCheck={handleCheck}
             handleDelete={handleDelete}
-            todo={item.todo}
             isChecked={item.isChecked}
             theme={theme}
           />
@@ -49,9 +49,9 @@ export default function TodosContainer({
           <Todo
             key={id}
             id={item.id}
+            todo={item.todo}
             handleCheck={handleCheck}
             handleDelete={handleDelete}
-            todo={item.todo}
             isChecked={item.isChecked}
             theme={theme}
           />
@@ -72,6 +72,7 @@ export default function TodosContainer({
         setList={setTodoArray}
         delayOnTouchOnly={true}
         delay={200}
+        animation={300}
       >
         {displayList()}
       </ReactSortable>

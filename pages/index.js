@@ -48,7 +48,7 @@ export default function Home() {
 
   useEffect(() => {
     document.body.style.backgroundColor =
-      theme === "light" ? "white" : "var(--VeryDarkBlue)";
+      theme === "light" ? "var(--VeryLightGray)" : "var(--VeryDarkBlue)";
   }, [theme]);
 
   const handleInputChange = (e) => setInput(e.target.value);

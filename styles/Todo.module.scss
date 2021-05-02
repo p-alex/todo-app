@@ -9,14 +9,15 @@
   cursor: pointer;
   font-size: 24px;
   color: #333;
-
+  animation-name: opacity1;
+  animation-duration: 300ms;
   p {
     position: relative;
     word-wrap: break-word;
     padding: 20px 0;
     display: block;
     width: 80%;
-    @media (max-width: 967px) {
+    @media (max-width: 720px) {
       font-size: 18px;
       padding: 20px 0;
     }
@@ -63,7 +64,7 @@
   right: 0px;
   padding: 20px;
   transition: opacity 300ms ease-in-out;
-  @media (max-width: 967px) {
+  @media (max-width: 720px) {
     opacity: 1;
   }
 }

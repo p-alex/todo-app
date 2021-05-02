@@ -1,6 +1,6 @@
 .todos_container {
   position: relative;
-  width: 800px;
+  width: var(--desktopContainer);
   left: 0;
   right: 0;
   top: -100px;
@@ -9,7 +9,7 @@
   border-radius: 5px;
   margin-top: 30px;
   box-shadow: var(--lightShadow);
-  @media (max-width: 967px) {
+  @media (max-width: 720px) {
     width: 90%;
   }
 }
