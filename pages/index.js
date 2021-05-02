@@ -3,6 +3,7 @@ import Banner from "../components/Banner";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import TodosContainer from "../containers/TodosContainer";
+import Head from "next/head";
 
 export default function Home() {
   const [todoArray, setTodoArray] = useState([]);
@@ -10,6 +11,11 @@ export default function Home() {
   const [filter, setFilter] = useState("All");
   const [theme, setTheme] = useState("light");
   const [toggleInitializeData, setToggleInitializeData] = useState(false);
+
+  useEffect(() => {
+    document.body.style.backgroundColor =
+      theme === "light" ? "var(--VeryLightGray)" : "var(--VeryDarkBlue)";
+  }, [theme]);
 
   useEffect(() => {
     if (localStorage.getItem("appData") === null) {
@@ -45,11 +51,6 @@ export default function Home() {
     let updatedData = (appData = { ...appData, todoArray });
     localStorage.setItem("appData", JSON.stringify(updatedData));
   }, [todoArray]);
-
-  useEffect(() => {
-    document.body.style.backgroundColor =
-      theme === "light" ? "var(--VeryLightGray)" : "var(--VeryDarkBlue)";
-  }, [theme]);
 
   const handleInputChange = (e) => setInput(e.target.value);
 
@@ -110,6 +111,25 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>
+          Todo app with ThemeSwitch and localStorage | Next.js and
+          react-sortablejs
+        </title>
+        <meta
+          name="keywords"
+          content="html, css, javaScript, theme, switch, nextjs, react-sortablejs, localStorage, frontend, mentor, react, todo, app,  front, end"
+        />
+        <meta
+          name="description"
+          content="This todo app was created using nextjs, sass, react-sortablejs, and localStorage. Challenge by Frontend Mentor."
+        />
+        <link
+          rel="shortcut icon"
+          type="image/jpg"
+          href="/images/favicon-32x32.png"
+        />
+      </Head>
       <Banner theme={theme}>
         <Header
           input={input}
