@@ -16,6 +16,7 @@ export default function Header({
             src={`/images/icon-${theme === "light" ? "moon" : "sun"}.svg`}
             width={25}
             height={25}
+            alt="theme-logo"
           />
         </div>
       </div>
@@ -44,6 +45,9 @@ export default function Header({
             onChange={handleInputChange}
             className={theme === "light" ? undefined : styles.darkmode}
           />
+          <button type="submit" style={{ display: "none" }}>
+            Submit
+          </button>
         </div>
       </form>
     </>

@@ -13,6 +13,10 @@ export default function Home() {
   const [toggleInitializeData, setToggleInitializeData] = useState(false);
 
   useEffect(() => {
+    document.documentElement.lang = "en-us";
+  }, []);
+
+  useEffect(() => {
     document.body.style.backgroundColor =
       theme === "light" ? "var(--VeryLightGray)" : "var(--VeryDarkBlue)";
   }, [theme]);

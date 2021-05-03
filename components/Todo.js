@@ -18,7 +18,12 @@ export default function Todo({
       <div onClick={() => handleCheck(id)} className={styles.checkboxContainer}>
         {isChecked ? (
           <div className={styles.checkbox + " " + styles.checked}>
-            <Image src="/images/icon-check.svg" width={11} height={11} />
+            <Image
+              src="/images/icon-check.svg"
+              width={11}
+              height={11}
+              alt="check"
+            />
           </div>
         ) : (
           <div
@@ -39,7 +44,12 @@ export default function Todo({
         <p onClick={() => handleCheck(id)}>{todo}</p>
       )}
       <div className={styles.deleteBtn} onClick={() => handleDelete(id)}>
-        <Image src="/images/icon-cross.svg" width={20} height={20} />
+        <Image
+          src="/images/icon-cross.svg"
+          width={20}
+          height={20}
+          alt="cross"
+        />
       </div>
     </li>
   );
