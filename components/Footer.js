@@ -10,7 +10,7 @@ export default function Footer({ theme }) {
         <a
           href="https://www.frontendmentor.io/solutions"
           target="_blank"
-          rel="norefferer"
+          rel="noreferrer"
           className={theme === "light" ? null : styles.darkmode}
         >
           Frontend Mentor
